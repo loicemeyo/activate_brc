@@ -54,11 +54,11 @@ const WelcomeText = styled.text`
     }
 `;
 const Container = styled.div`
-    position: absolute;
-    top: 55px;
-    margin-left: 30px;
-    width: 250px;
-    height: 60px;
+        position: absolute;
+        top: 55px;
+        margin-left: 30px;
+        width: 250px;
+        height: 60px;
 `;
 const NavBar = styled.section`
     overflow: hidden;

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components'; 
 import Home from './Home';
 import { device } from './device';
+import Pic from './Reading.jpg';
 class App extends Component {
   state={
     isSignedIn: false
@@ -32,6 +33,9 @@ class App extends Component {
           <Home/>
         ) : (
           <Wrapper>
+            <Container>
+            <img src={Pic} alt="Reading" style={{width: "850px", height: "740px"}} />
+            </Container>
             <Brc>2020</Brc>
             <BrcText>Bible Reading Challenge</BrcText>
               <SignIn>
@@ -57,7 +61,7 @@ const Brc = styled.text`
   position: absolute;
   top: 120px;
   margin-left: 30px;
-  font-family: 'Roboto Mono', monospace;
+  font-family: 'Montserrat', sans-serif;
   @media ${device.mobileL} { 
     top: 100px;
     margin-left: 20px;
@@ -66,7 +70,7 @@ const Brc = styled.text`
 `;
 const BrcText = styled.text`
   font-size: 45px;
-  font-family: 'Merienda', cursive;
+  font-family: 'Cardo', serif;
   position: absolute;
   top: 310px;
   margin-left: 30px;
@@ -97,6 +101,14 @@ const InitiatedText = styled.div`
   text-align: center;
   font-size: 23px;
   font-family: 'Open Sans Condensed', sans-serif;
+`;
+
+const Container = styled.div`
+    position: absolute;
+    top: 8px;
+    margin-left: 655px;
+    width: 250px;
+    height: 170px;
 `;
 
 export default App;

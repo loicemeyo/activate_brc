@@ -26,27 +26,54 @@ export default function Home() {
                     <p><b>{name}</b>, Welcome to 2020 Bible Reading Challenge.</p>
                     {firebase.auth().currentUser ? <p>We're glad you have joined us!</p> : <p>Please <Link to="/">sign in</Link> here to register for the challenge!</p> }
                     <p></p>
-                    <p>One of the most beneficial spiritual disciplines you can ever practice is reading the entire Bible from cover to cover.</p>
-                    <p>This will give you a broad sweep of God's story as it unfolds throughout human history and your place in His grand purposes.</p>
-                    <p>You are not an insignificant speck floating through time but an important part of what God is doing today. </p>
-                    <p></p>
-                    <p>However, you can only discover your purpose as you prepare your heart to seek God, spending time in His Word daily. </p>
-                    <p>His voice becomes clearer to you when you acquaint yourself with His-story (past), His presence (present) and  </p>
-                    <p>His plans (future).</p>
-                    <p></p>
-                    <p>This 2020 Bible Reading Challenge will require you to follow the plan to: </p>
-                    <p>1. READ the daily passages </p>
-                    <p>2. OBEY what God shows you and </p>
-                    <p>3. SHARE particular insights with others </p>
+                    <p>Below are scripture references to read this week: </p>
+                    <table style={{border: "1px solid black"}}>
+                        <tr>
+                            <th>Day</th>
+                            <th>Date</th>
+                            <th>Scripture</th>
+                        </tr>
+                           <tr>
+                               <td>20</td>
+                               <td>20-Jan-2020</td>
+                               <td>Genesis 25-26</td>
+                            </tr> 
+                            <tr>
+                               <td>21</td>
+                               <td>21-Jan-2020</td>
+                               <td>Genesis 27-29</td>
+                            </tr> 
+                            <tr>
+                               <td>22</td>
+                               <td>22-Jan-2020</td>
+                               <td>Genesis 30-31</td>
+                            </tr>
+                            <tr>
+                               <td>23</td>
+                               <td>23-Jan-2020</td>
+                               <td>Genesis 32-34</td>
+                            </tr>
+                            <tr>
+                               <td>24</td>
+                               <td>24-Jan-2020</td>
+                               <td>Genesis 35-37</td>
+                            </tr>
+                            <tr>
+                               <td>25</td>
+                               <td>25-Jan-2020</td>
+                               <td>Genesis 38-40</td>
+                            </tr>
+                            <tr>
+                               <td>26</td>
+                               <td>26-Jan-2020</td>
+                               <td>Genesis 41-42</td>
+                            </tr>          
+                    </table>
                     <p></p>
                     <p>To make the journey even more exciting, you can join our online community at <a href="https://www.facebook.com/groups/2565141490259311/?source_id=102033831291368"> FB BRC 2020</a> to share lessons, </p>
                     <p>ask questions, participate in the monthly Facebook Live forum and be notified of periodic events you can attend </p>
                     <p> with others on this journey of discovering God through the scriptures. </p>
-                    <p>By signing up for this, you will receive daily notifications of the passage for the day in your email box.</p>
-                    <p>I'm looking forward to this journey with you as together we follow Jesus daily through the pages of the Bible </p>
-                    <p>and apply His Word to our lives in this world. </p>
                 </WelcomeText>
-                <Name>Mark Kolo - International Team Leader</Name>
             </Wrapper>
             {/* <Footer>Initiated by <Link style={{color: "#87CEFA"}} to="/activate">Activate Kenya</Link></Footer> */}
         </div>
