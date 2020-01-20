@@ -3,15 +3,15 @@ import './App.css';
 import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components'; 
+import styled from 'styled-components';
 import Home from './Home';
 import { device } from './device';
 import Pic from './Reading.jpg';
 class App extends Component {
-  state={
+  state = {
     isSignedIn: false
-    }
-  uiConfig={
+  }
+  uiConfig = {
     signInFlow: "popup",
     signInOptions: [
       firebase.auth.GoogleAuthProvider.PROVIDER_ID
@@ -21,41 +21,42 @@ class App extends Component {
     }
   }
 
-  async componentDidMount () {
+  async componentDidMount() {
     await firebase.auth().onAuthStateChanged(user => {
       this.setState({ isSignedIn: !!user })
     })
   }
-  render () {
+  render() {
     return (
       <div>
-        {this.state.isSignedIn? (
-          <Home/>
+        {this.state.isSignedIn ? (
+          <Home />
         ) : (
-          <Wrapper>
-            <Container>
-            <img src={Pic} alt="Reading" style={{width: "850px", height: "740px"}} />
-            </Container>
-            <Brc>2020</Brc>
-            <BrcText>Bible Reading Challenge</BrcText>
-              <SignIn>
-                <StyledFirebaseAuth
-                uiConfig={this.uiConfig}
-                firebaseAuth={firebase.auth()}
-                />
-              </SignIn>
-              <InitiatedText>Initiated by <Link style={{color: "#87CEFA"}} to="/activate">Activate Kenya</Link></InitiatedText>
-          </Wrapper> 
+            <Wrapper>
+              <StyledContainer>
+                <div>
+                  <Brc>2020</Brc>
+                  <BrcText>Bible Reading Challenge</BrcText>
+                  <SignIn>
+                    <StyledFirebaseAuth
+                      uiConfig={this.uiConfig}
+                      firebaseAuth={firebase.auth()}
+                    />
+                  </SignIn>
+                </div>
+              </StyledContainer>
+              <InitiatedText>Initiated by <Link style={{ color: "#87CEFA" }} to="/activate">Activate Kenya</Link></InitiatedText>
+            </Wrapper>
           )}
       </div>
-      )
+    )
   }
 }
 
 const Wrapper = styled.section`
   padding: 2px;
-  // background: #FEFCFC;
 `;
+
 const Brc = styled.text`
   font-size: 120px;
   position: absolute;
@@ -68,6 +69,7 @@ const Brc = styled.text`
     font-size: 100px;
   }
 `;
+
 const BrcText = styled.text`
   font-size: 45px;
   font-family: 'Cardo', serif;
@@ -79,6 +81,7 @@ const BrcText = styled.text`
     font-size: 40px;
   }
 `;
+
 const SignIn = styled.button`
   position: absolute;
   top: 400px;
@@ -91,6 +94,7 @@ const SignIn = styled.button`
     top: 450px;
   }
 `;
+
 const InitiatedText = styled.div`
   position: fixed;
   left: 0;
@@ -103,12 +107,13 @@ const InitiatedText = styled.div`
   font-family: 'Open Sans Condensed', sans-serif;
 `;
 
-const Container = styled.div`
-    position: absolute;
-    top: 8px;
-    margin-left: 655px;
-    width: 250px;
-    height: 170px;
+const StyledContainer = styled.div`
+  height: 100vh;
+  width: 100%;
+  background-image: url(${Pic});
+  background-repeat:no-repeat;
+  background-position:center center;
+  background-size: cover;
 `;
 
 export default App;
