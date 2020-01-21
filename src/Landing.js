@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Home from './Home';
+import References from './References';
 import { device } from './device';
 import Pic from './Reading.jpg';
 class App extends Component {
@@ -30,7 +31,7 @@ class App extends Component {
     return (
       <div>
         {this.state.isSignedIn ? (
-          <Home />
+          <References />
         ) : (
             <Wrapper>
               <StyledContainer>
@@ -57,7 +58,7 @@ const Wrapper = styled.section`
   padding: 2px;
 `;
 
-const Brc = styled.text`
+const Brc = styled.div`
   font-size: 120px;
   position: absolute;
   top: 120px;
@@ -70,7 +71,7 @@ const Brc = styled.text`
   }
 `;
 
-const BrcText = styled.text`
+const BrcText = styled.div`
   font-size: 45px;
   font-family: 'Cardo', serif;
   position: absolute;

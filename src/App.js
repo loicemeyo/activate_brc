@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import firebase from 'firebase';
-import Home from './Home';
+import firebase from 'firebase/app';
+import References from './References';
 import Landing from './Landing';
 import Follow from './Follow';
 import Activate from './Activate';
@@ -21,7 +21,7 @@ export default function App() {
       <BrowserRouter>
       <Switch>
         <Route path='/' exact component={Landing}/>
-        <Route path='/home' exact component={Home}/>
+        <Route path='/home' exact component={References}/>
         <Route path='/activate' exact component={Activate}/>
         <Route path='/follow' exact component={Follow}/>
       </Switch>
