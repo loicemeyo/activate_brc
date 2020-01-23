@@ -3,20 +3,22 @@ import styled from 'styled-components';
 import firebase from 'firebase/app';
 import { Data } from './Data';
 import { device } from './device';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 export default function References() {
-    const name = firebase.auth().currentUser ? firebase.auth().currentUser.displayName : "Hello"
-    console.log(Data, 'Data')
-    console.log(Data[0], 'first')
+    const history = useHistory();
+    const signOutHandler = () => {
+        firebase.auth().signOut().then(() => history.push('/'))
+    }
+    const isLoggedIn = firebase.auth().currentUser;
+    const name = isLoggedIn ? firebase.auth().currentUser.displayName : "Hello"
     const Scriptures = Data;
-    console.log(Scriptures, 'scrree')
     return (
         <div>
             <NavBar>
                         <Link style={{margin: "3px", color: "#FFF5EE"}} to="/activate">Activate</Link>
                         <Link style={{margin: "3px", color: "#fffafa"}} to="/follow">Follow</Link>
-                        {firebase.auth().currentUser ?
-                        <Link style={{margin: "3px", color: "#fffafa"}} onClick={() => firebase.auth().signOut()}>SignOut</Link> :
+                        {isLoggedIn ?
+                        <SignOut onClick={signOutHandler}>SignOut</SignOut> :
                         <Link style={{margin: "3px", color: "#fffafa"}} to="/">SignIn</Link>
                         }
                 </NavBar>
@@ -25,7 +27,7 @@ export default function References() {
                 </QuoteText>
                 <WelcomeText>
                 <p><b>{name}</b>, Welcome to 2020 Bible Reading Challenge.</p>
-                    {firebase.auth().currentUser ? <p>We're glad you have joined us!</p> : <p>Please <Link to="/">sign in</Link> here to register for the challenge!</p> }
+                    {isLoggedIn ? <p>We're glad you have joined us!</p> : <p>Please <Link to="/">sign in</Link> here to register for the challenge!</p> }
                     <p></p>
                     <p>Below are scripture references to read this week: </p>
                     <p></p>
@@ -113,9 +115,14 @@ const Footer = styled.div`
     font-family: 'Open Sans Condensed', sans-serif;
     @media ${device.mobileL} { 
         width: 100%;
-        // overflow: hidden;
         position: absolute;
         bottom: 0;
         z-index: 0;
     }
 `;
+const SignOut = styled.div`
+    margin: 3px;
+    color: #fffafa;
+    text-decoration: underline;
+`;
+

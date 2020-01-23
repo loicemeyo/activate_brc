@@ -39,11 +39,8 @@ export default function Activate() {
 
 const Wrapper = styled.section`
   padding: 2px;
-  // background: #FEFCFC;
 `;
 const WelcomeText = styled.div`
-    // display: flex;
-    // flex-wrap: wrap;
     font-size: 13px;
     position: absolute;
     top: 160px;
