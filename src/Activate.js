@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import { Link } from 'react-router-dom';
 import Logo from './Logo2.png';
 import { device } from './device';
@@ -39,11 +39,8 @@ export default function Activate() {
 
 const Wrapper = styled.section`
   padding: 2px;
-  // background: #FEFCFC;
 `;
-const WelcomeText = styled.text`
-    // display: flex;
-    // flex-wrap: wrap;
+const WelcomeText = styled.div`
     font-size: 13px;
     position: absolute;
     top: 160px;

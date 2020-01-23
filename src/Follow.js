@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import { Link } from 'react-router-dom';
 import { device } from './device';
 
@@ -69,24 +69,7 @@ const ListItem = styled.li`
     list-style-position:outside;
 `;
 
-const Title = styled.text`
-    background: #808080
-    color: #FFFFFF;
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 20px;
-    padding: 5px;
-    position: absolute;
-    top: 150px;
-    margin-left: 30px;
-    @media ${device.mobileL} {
-        position: absolute; 
-        top: 180px;
-        display: flex;
-        align-items: center;
-    }
-`;
-
-const WelcomeText = styled.text`
+const WelcomeText = styled.div`
     font-size: 12px;
     position: absolute;
     top: 160px;
@@ -99,7 +82,7 @@ const WelcomeText = styled.text`
         margin-left: 20px;
     }
 `;
-const QuoteText = styled.text`
+const QuoteText = styled.div`
     font-size: 20px;
     position: absolute;
     top: 90px;
@@ -112,7 +95,7 @@ const QuoteText = styled.text`
         font-size: 15px;
     }
 `;
-const QuoteTextII = styled.text`
+const QuoteTextII = styled.div`
     font-size: 20px;
     position: absolute;
     top: 200px;
