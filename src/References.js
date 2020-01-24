@@ -33,17 +33,15 @@ export default function References() {
                     <p></p>
                     <Container>
                     <Card>
-                                <img src="https://source.unsplash.com/daily?bible"  alt='complementary-image' width="440" height="220"></img>
+                         <img src="https://source.unsplash.com/daily?bible"  alt='complementary-image' width="440" height="220"></img>
+
 
                             {Scriptures.map((Scripture, key) => (
 
                             <Wrapper key={key}>
-                                {/* <img src="https://source.unsplash.com/daily?bible"  alt='complementary-image' width="440"></img> */}
                                 <Item style={{background: "#98ffd9"}}> Day {Scripture.Day}, {Scripture.Date},
                                 <Sspan> {Scripture.Scripture}</Sspan>
                                 </Item>
-                                {/* <DataDiv>{Scripture.Date}</DataDiv>
-                                <DataDiv>{Scripture.Scripture}</DataDiv> */}
                                 </Wrapper>
 
                         ))}
@@ -143,7 +141,7 @@ const Container = styled.div`
 position: absolute;
 overflow: hidden;
 top: 115px;
-margin-left: 8px;
+margin-left: 10px;
 box-sizing: border-box;
 font-family: Poppins, sans-serif; 
 height: 100vh;
@@ -152,9 +150,7 @@ place-items: center;
 `;
 
 const Card = styled.div`
-// background-color: #FFFFF9;
 border-radius: 1rem;
-// overflow: hidden;
 box-shadow: 0px 30px 20px -10px rgba(0, 0, 0, 0.2); 
 background-color: #F4F4F4;
 `;
