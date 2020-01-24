@@ -31,13 +31,24 @@ export default function References() {
                     <p></p>
                     <p>Below are scripture references to read this week: </p>
                     <p></p>
-                        {Scriptures.map((Scripture, key) => (
-                            <OuterDiv key={key}>
-                                <DataDiv>Day {Scripture.Day}</DataDiv>
-                                <DataDiv>{Scripture.Date}</DataDiv>
-                                <DataDiv>{Scripture.Scripture}</DataDiv>
-                            </OuterDiv>
+                    <Container>
+                    <Card>
+                                <img src="https://source.unsplash.com/daily?bible"  alt='complementary-image' width="440" height="220"></img>
+
+                            {Scriptures.map((Scripture, key) => (
+
+                            <Wrapper key={key}>
+                                {/* <img src="https://source.unsplash.com/daily?bible"  alt='complementary-image' width="440"></img> */}
+                                <Item style={{background: "#98ffd9"}}> Day {Scripture.Day}, {Scripture.Date},
+                                <Sspan> {Scripture.Scripture}</Sspan>
+                                </Item>
+                                {/* <DataDiv>{Scripture.Date}</DataDiv>
+                                <DataDiv>{Scripture.Scripture}</DataDiv> */}
+                                </Wrapper>
+
                         ))}
+                        </Card>
+                        </Container>
                 </WelcomeText>
                 <Footer>Initiated by <Link style={{color: "#87CEFA"}} to="/activate">Activate Kenya</Link></Footer>
             
@@ -74,6 +85,7 @@ const QuoteText = styled.div`
 const NavBar = styled.section`
     overflow: hidden;
     position: fixed;
+    z-index: 1;
     height: 10px;
     width: 96%;
     top: 0;
@@ -105,6 +117,7 @@ const DataDiv = styled.div`
 const Footer = styled.div`
     position: fixed;
     overflow: hidden;
+    z-index: 1;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -126,4 +139,42 @@ const SignOut = styled.div`
     text-decoration: underline;
     cursor: pointer;
 `;
+const Container = styled.div`
+position: absolute;
+overflow: hidden;
+top: 115px;
+margin-left: 8px;
+box-sizing: border-box;
+font-family: Poppins, sans-serif; 
+height: 100vh;
+display: grid;
+place-items: center;
+`;
+
+const Card = styled.div`
+// background-color: #FFFFF9;
+border-radius: 1rem;
+// overflow: hidden;
+box-shadow: 0px 30px 20px -10px rgba(0, 0, 0, 0.2); 
+background-color: #F4F4F4;
+`;
+const Wrapper = styled.div`
+display: flex;
+flex-direction: column;
+padding: 2px 10px 2px 10px;
+`;
+const Item = styled.div`
+text-align: center;
+  padding: 20px 10px 20px 10px;
+  border-radius: 5px;
+  width: 400px;
+  margin-bottom: 10px;
+`;
+const Sspan = styled.span`
+text-transform: uppercase;
+  font-weight: bold;
+`;
+
+
+
 
