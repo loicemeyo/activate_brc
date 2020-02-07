@@ -15,74 +15,68 @@ export default function References() {
     return (
         <div>
             <NavBar>
-                        <Link style={{margin: "3px", color: "#FFF5EE"}} to="/activate">Activate</Link>
-                        <Link style={{margin: "3px", color: "#fffafa"}} to="/follow">Follow</Link>
-                        {isLoggedIn ?
-                        <SignOut onClick={signOutHandler}>SignOut</SignOut> :
-                        <Link style={{margin: "3px", color: "#fffafa"}} to="/">SignIn</Link>
-                        }
-                </NavBar>
-              <QuoteText>
-                "The Bible was not given for our information but for our transformation.”― Dwight Lyman Moody
+                <Link style={{margin: "3px", color: "#FFF5EE"}} to="/activate">Activate</Link>
+                <Link style={{margin: "3px", color: "#fffafa"}} to="/follow">Follow</Link>
+                {isLoggedIn ?
+                <SignOut onClick={signOutHandler}>SignOut</SignOut> :
+                <Link style={{margin: "3px", color: "#fffafa"}} to="/">SignIn</Link>
+                }
+            </NavBar>
+            <Content>
+                <QuoteText>
+                    "The Bible was not given for our information but for our transformation.”― Dwight Lyman Moody
                 </QuoteText>
                 <WelcomeText>
-                <p><b>{name}</b>, Welcome to 2020 Bible Reading Challenge.</p>
-                    {isLoggedIn ? <p>We're glad you have joined us!</p> : <p>Please <Link to="/">sign in</Link> here to register for the challenge!</p> }
-                    <p></p>
-                    <p>Below are scripture references to read this week: </p>
-                    <p></p>
-                    <Container>
-                    <Card>
-                         <img src="https://source.unsplash.com/daily?bible"  alt='complementary-image' width="440" height="220"></img>
-
-
-                            {Scriptures.map((Scripture, key) => (
-
-                            <Wrapper key={key}>
-                                <Item style={{background: "#98ffd9"}}> Day {Scripture.Day}, {Scripture.Date},
-                                <Sspan> {Scripture.Scripture}</Sspan>
-                                </Item>
-                                </Wrapper>
-
-                        ))}
-                        </Card>
-                        </Container>
+                    <p>
+                        <b>{name}</b>, Welcome to 2020 Bible Reading Challenge.
+                    </p>
+                        {
+                            isLoggedIn ? 
+                            <p>We're glad you have joined us!</p> : 
+                            <p>Please <Link to="/">sign in</Link> here to register for the challenge!</p> 
+                        }
+                        <p></p>
+                        <p>Below are scripture references to read this week: </p>
+                        <p></p>
                 </WelcomeText>
-                <Footer>Initiated by <Link style={{color: "#87CEFA"}} to="/activate">Activate Kenya</Link></Footer>
+                <Container>
+                    <Card>
+                        <Layout></Layout>
+                        {
+                            Scriptures.map((Scripture, key) => (
+                                <Wrapper key={key}> 
+                                    <Item style={{background: Scripture.Color}}> Day {Scripture.Day}, {Scripture.Date},
+                                        <Sspan> {Scripture.Scripture}</Sspan>
+                                    </Item>
+                                </Wrapper>
+                            ))
+                        }
+
+                    </Card>
+                </Container>
+            </Content>
+            <Footer>Initiated by <Link style={{color: "#87CEFA"}} to="/activate">Activate Kenya</Link></Footer>
             
         </div>
     )
 }
 const WelcomeText = styled.div`
     font-size: 12px;
-    position: absolute;
-    top: 105px;
-    margin-left: 30px;
     font-family: 'Roboto Mono', monospace;
-    @media ${device.mobileL} { 
-        position: absolute;
-        top: 200px;
+    @media ${device.mobileL} {
         font-size: 11px;
         z-index: 1;
     }
 `;
 const QuoteText = styled.div`
     font-size: 18px;
-    position: absolute;
-    top: 90px;
-    margin-left: 30px;
-    margin-left: 30px;
     font-family: 'Beth Ellen', cursive;
     @media ${device.mobileS} { 
-        position: absolute;
-        top: 50px;
-        margin-top: 10px;
         font-size: 15px;
     }
 `;
 const NavBar = styled.section`
     overflow: hidden;
-    position: fixed;
     z-index: 1;
     height: 10px;
     width: 96%;
@@ -105,12 +99,6 @@ const NavBar = styled.section`
         position:sticky;
         top: 0;
     }
-    `;
-const OuterDiv = styled.div`
-    display: flex;
-`;
-const DataDiv = styled.div`
-    padding: 5px;
 `;
 const Footer = styled.div`
     position: fixed;
@@ -126,7 +114,6 @@ const Footer = styled.div`
     font-family: 'Open Sans Condensed', sans-serif;
     @media ${device.mobileL} { 
         width: 100%;
-        position: absolute;
         bottom: 0;
         z-index: 0;
     }
@@ -138,39 +125,50 @@ const SignOut = styled.div`
     cursor: pointer;
 `;
 const Container = styled.div`
-position: absolute;
-overflow: hidden;
-top: 115px;
-margin-left: 10px;
-box-sizing: border-box;
-font-family: Poppins, sans-serif; 
-height: 100vh;
-display: grid;
-place-items: center;
+    overflow: hidden;
+    margin-left: 10px;
+    box-sizing: border-box;
+    font-family: Poppins, sans-serif; 
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    width: 100%
 `;
 
 const Card = styled.div`
-border-radius: 1rem;
-box-shadow: 0px 30px 20px -10px rgba(0, 0, 0, 0.2); 
-background-color: #F4F4F4;
+    border-radius: 1rem;
+    box-shadow: 0px 30px 20px -10px rgba(0, 0, 0, 0.2); 
+    background-color: #F4F4F4;
 `;
 const Wrapper = styled.div`
-display: flex;
-flex-direction: column;
-padding: 2px 10px 2px 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 2px 10px 2px 10px;
 `;
 const Item = styled.div`
-text-align: center;
-  padding: 20px 10px 20px 10px;
-  border-radius: 5px;
-  width: 400px;
-  margin-bottom: 10px;
+    text-align: center;
+    padding: 20px 10px 20px 10px;
+    border-radius: 5px;
+    width: 400px;
+    margin-bottom: 5px;
 `;
 const Sspan = styled.span`
-text-transform: uppercase;
-  font-weight: bold;
+    text-transform: uppercase;
+    font-weight: bold;
 `;
-
+const Content = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+`;
+const Layout = styled.div`
+    background-image: url("https://source.unsplash.com/daily?bible");
+    background-size: cover;
+    background-repeat:no-repeat;
+    width: 440px;
+    height: 240px;
+`;
 
 
 
